@@ -1,0 +1,16 @@
+{
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"version": 2,
+	"alias": "nassro.is-a.dev",
+	"cleanUrls": true,
+	"public": true,
+	"regions": [
+		"lhr1"
+	],
+	"redirects": [
+		{
+			"source": "/github",
+			"destination": "https://github.com/nassro199"
+		}
+	]
+}
