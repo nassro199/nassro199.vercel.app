@@ -16,21 +16,25 @@ const staticMenuItems: Array<Array<NavigationItem>> = [
 			href: '/',
 		},
 
-
+		{
+			type: NavigationItemType.LINK,
+			icon: 'feather:award',
+			text: 'Skills',
+			href: '/skills',
+		},
 	],
 	[
 		{
 			type: NavigationItemType.LINK,
-			icon: 'feather:Discord',
+			icon: 'feather:message-circle',
 			text: 'Discord',
-			href: 'https://discord.gg/zQZQNKp6',
-			external: true,
+			href: '/discord',
 		},
 		{
 			type: NavigationItemType.LINK,
 			icon: 'feather:github',
 			text: 'GitHub',
-			href: 'https://github.com/nassro',
+			href: 'https://github.com/nassro190',
 			external: true,
 		},
 	],
@@ -45,21 +49,7 @@ export function useNavigation(): {
 	const { color, loading, status } = useStatus();
 	const { theme, setTheme } = useTheme();
 
-	const menuItems: NavigationItems = [
-		...staticMenuItems,
-		...(!loading && status.discord_status !== 'offline'
-			? [
-				[
-					{
-						type: NavigationItemType.LINK,
-						icon: <Status.Indicator color={color} pulse />,
-						text: 'Status',
-						href: '/status',
-					} as NavigationItem,
-				],
-			]
-			: []),
-	];
+	const menuItems: NavigationItems = staticMenuItems;
 
 	const settingsItems: NavigationItems = [
 		[

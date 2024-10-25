@@ -59,20 +59,18 @@ function MenuButtonIcon({
 	return <Icon aria-hidden="true" className={clsx('w-5 h-5 mr-3', className)} icon={icon} />;
 }
 
-/**
- * Menu Link
- *
- * @see https://headlessui.dev/react/menu#integrating-with-next-js
- */
-function MenuLink({ children, href, onClick, ...rest }: MenuLinkProps): JSX.Element {
+const MenuLink = forwardRef<HTMLAnchorElement, MenuLinkProps>(function MenuLink(
+	{ children, href, onClick, ...rest },
+	ref,
+) {
 	return (
 		<Link href={href} passHref>
-			<StyledMenuItem onClick={(...args): void => onClick(...args)} {...rest}>
+			<StyledMenuItem onClick={(...args): void => onClick?.(...args)} ref={ref} {...rest}>
 				{children}
 			</StyledMenuItem>
 		</Link>
 	);
-}
+});
 
 export function Dropdown({ children, items, position = 'top-left' }: StandardProps): JSX.Element {
 	return (
@@ -132,8 +130,8 @@ export function Dropdown({ children, items, position = 'top-left' }: StandardPro
 														if (external)
 															return (
 																<StyledMenuItem
-																	className="group"
 																	active={active}
+																	className="group"
 																	href={item.href}
 																	rel="noopener noreferrer"
 																	target="_blank">
